@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Plugin Name:		WP Dashboard Notes
  * Plugin URI:		https://wordpress.org/plugins/wp-dashboard-notes/
  * Donate link:		http://jeroensormani.com/donate/
@@ -8,7 +8,7 @@
  * Author:			Jeroen Sormani
  * Author URI:		http://jeroensormani.com/
  * Text Domain:		wp-dashboard-notes
-*/
+ */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! is_admin() ) return; // Only load plugin when user is in admin
@@ -114,7 +114,7 @@ class WP_Dashboard_Notes {
 		 * Admin class.
 		 */
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpdn-admin.php';
-		$this->admin= new WPDN_Admin();
+		$this->admin = new WPDN_Admin();
 
 	}
 
@@ -186,8 +186,8 @@ class WP_Dashboard_Notes {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param	int		$note_id	ID of the note.
-	 * @return	array				Note meta.
+	 * @param  int   $note_id ID of the note.
+	 * @return array          Note meta.
 	 */
 	public static function wpdn_get_note_meta( $note_id ) {
 
@@ -218,8 +218,8 @@ class WP_Dashboard_Notes {
 
 		foreach ( $notes as $note ) :
 
-			$note_meta	= $this->wpdn_get_note_meta( $note->ID );
-			$user		= wp_get_current_user();
+			$note_meta = $this->wpdn_get_note_meta( $note->ID );
+			$user      = wp_get_current_user();
 
 			// Skip if private
 			if ( 'private' == $note_meta['visibility'] && $user->ID != $note->post_author ) :
@@ -247,22 +247,22 @@ class WP_Dashboard_Notes {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param object	$post Post object.
-	 * @param array		$args Extra arguments.
+	 * @param object $post Post object.
+	 * @param array  $args Extra arguments.
 	 */
 	public function wpdn_render_dashboard_widget( $post, $args ) {
 
-		$note		= $args['args'];
-		$note_meta	= $this->wpdn_get_note_meta( $note->ID );
-		$content	= apply_filters( 'wpdn_content', $note->post_content );
-		$colors		= apply_filters( 'wpdn_colors', array(
-			'white'		=> '#fff',
-			'red'		=> '#f7846a',
-			'orange'	=> '#ffbd22',
-			'yellow'	=> '#eeee22',
-			'green'		=> '#bbe535',
-			'blue'		=> '#66ccdd',
-			'black'		=> '#777777',
+		$note      = $args['args'];
+		$note_meta = $this->wpdn_get_note_meta( $note->ID );
+		$content   = apply_filters( 'wpdn_content', $note->post_content );
+		$colors    = apply_filters( 'wpdn_colors', array(
+			'white'  => '#fff',
+			'red'    => '#f7846a',
+			'orange' => '#ffbd22',
+			'yellow' => '#eeee22',
+			'green'  => '#bbe535',
+			'blue'   => '#66ccdd',
+			'black'  => '#777777',
 		) );
 
 		// Inline styling required for note depending colors.
@@ -287,8 +287,8 @@ class WP_Dashboard_Notes {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param	string	$content	Original content.
-	 * @return	string				Edited content.
+	 * @param  string $content Original content.
+	 * @return string          Edited content.
 	 */
 	public function wpdn_clickable_url( $content ) {
 
@@ -314,8 +314,11 @@ class WP_Dashboard_Notes {
 if ( ! function_exists( 'WP_Dashboard_Notes' ) ) :
 
 	function WP_Dashboard_Notes() {
+
 		return WP_Dashboard_Notes::instance();
+
 	}
+
 
 endif;
 
