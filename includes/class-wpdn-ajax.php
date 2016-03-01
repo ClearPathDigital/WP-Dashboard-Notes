@@ -41,21 +41,21 @@ class WPDN_Ajax {
 	 *
 	 * @since 1.0.0
 	 */
-	 public function wpdn_update_note() {
+		public function wpdn_update_note() {
 
 		$post = array(
-			'ID'			=> $_POST['post_id'],
-			'post_title'	=> $_POST['post_title'],
-			'post_content'	=> $_POST['post_content'],
+			'ID'           => $_POST['post_id'],
+			'post_title'   => $_POST['post_title'],
+			'post_content' => $_POST['post_content'],
 		);
 
 		wp_update_post( $post );
 
 		$note_meta = array(
-			'color'			=> $_POST['note_color'],
-			'color_text'	=> $_POST['note_color_text'],
-			'visibility'	=> $_POST['note_visibility'],
-			'note_type'		=> $_POST['note_type'],
+			'color'      => $_POST['note_color'],
+			'color_text' => $_POST['note_color_text'],
+			'visibility' => $_POST['note_visibility'],
+			'note_type'  => $_POST['note_type'],
 		);
 		update_post_meta( $_POST['post_id'], '_note', $note_meta );
 
@@ -73,16 +73,16 @@ class WPDN_Ajax {
 	 */
 	public function wpdn_toggle_note() {
 
-		$note		= get_post( $_POST['post_id'] );
-		$content	= apply_filters( 'wpdn_content', $note->post_content );
-		$colors		= apply_filters( 'wpdn_colors', array(
-			'white'		=> '#fff',
-			'red'		=> '#f7846a',
-			'orange'	=> '#ffbd22',
-			'yellow'	=> '#eeee22',
-			'green'		=> '#bbe535',
-			'blue'		=> '#66ccdd',
-			'black'		=> '#777777',
+		$note    = get_post( $_POST['post_id'] );
+		$content = apply_filters( 'wpdn_content', $note->post_content );
+		$colors  = apply_filters( 'wpdn_colors', array(
+			'white'  => '#fff',
+			'red'    => '#f7846a',
+			'orange' => '#ffbd22',
+			'yellow' => '#eeee22',
+			'green'  => '#bbe535',
+			'blue'   => '#66ccdd',
+			'black'  => '#777777',
 		) );
 		$note_meta = WP_Dashboard_Notes::wpdn_get_note_meta( $note->ID );
 
@@ -113,28 +113,28 @@ class WPDN_Ajax {
 	public function wpdn_add_note() {
 
 		$args = array(
-			'post_status'	=> 'publish',
-			'post_type'		=> 'note',
-			'post_title'	=> __( 'New note', 'wp-dashboard-notes' ),
+			'post_status' => 'publish',
+			'post_type'   => 'note',
+			'post_title'  => __( 'New note', 'wp-dashboard-notes' ),
 		);
 		$post_id = wp_insert_post( $args );
 
-		$note		= (object) array( 'ID' => $post_id, 'post_content' => '' );
-		$note_meta	= apply_filters( 'wpdn_new_note_meta', array(
-			'color'			=> '#ffffff',
-			'color_text'	=> 'white',
-			'visibility'	=> 'Everyone',
-			'note_type'		=> 'list',
+		$note      = (object) array( 'ID' => $post_id, 'post_content' => '' );
+		$note_meta = apply_filters( 'wpdn_new_note_meta', array(
+			'color'      => '#ffffff',
+			'color_text' => 'white',
+			'visibility' => 'Everyone',
+			'note_type'  => 'list',
 		) );
-		$content	= apply_filters( 'wpdn_content', $note->post_content );
-		$colors		= apply_filters( 'wpdn_colors', array(
-			'white'		=> '#fff',
-			'red'		=> '#f7846a',
-			'orange'	=> '#ffbd22',
-			'yellow'	=> '#eeee22',
-			'green'		=> '#bbe535',
-			'blue'		=> '#66ccdd',
-			'black'		=> '#777777',
+		$content = apply_filters( 'wpdn_content', $note->post_content );
+		$colors  = apply_filters( 'wpdn_colors', array(
+			'white'  => '#fff',
+			'red'    => '#f7846a',
+			'orange' => '#ffbd22',
+			'yellow' => '#eeee22',
+			'green'  => '#bbe535',
+			'blue'   => '#66ccdd',
+			'black'  => '#777777',
 		) );
 		$note_meta = apply_filters( 'wpdn_new_note_meta', $note_meta );
 		update_post_meta( $post_id, '_note', $note_meta );
