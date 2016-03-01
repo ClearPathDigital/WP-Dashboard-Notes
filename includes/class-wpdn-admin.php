@@ -33,7 +33,7 @@ class WPDN_Admin {
 	 *
 	 * @since 1.0.7
 	 *
-	 * @param $wp_admin_bar Arg that will allow one to add new items.
+	 * @param  $wp_admin_bar Arg that will allow one to add new items.
 	 */
 	public function admin_bar_add_note( &$wp_admin_bar ) {
 
