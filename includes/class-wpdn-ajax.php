@@ -41,7 +41,7 @@ class WPDN_Ajax {
 	 *
 	 * @since 1.0.0
 	 */
-		public function wpdn_update_note() {
+	public function wpdn_update_note() {
 
 		$post = array(
 			'ID'           => $_POST['post_id'],
