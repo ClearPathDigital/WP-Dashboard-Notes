@@ -24,7 +24,7 @@ class Note_Post_Type {
 		// Register post type
 		add_action( 'init', array( $this, 'register_post_type' ) );
 
-		}
+	}
 
 
 	/**
