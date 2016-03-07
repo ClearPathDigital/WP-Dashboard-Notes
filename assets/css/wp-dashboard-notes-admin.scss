@@ -325,3 +325,15 @@ span.wpdn-color-note:hover .wpdn-color-palette {
 [data-color-text=template] .saving-icon {
 	color: inherit;
 }
+
+/****************************
+ * Mobile Adjustments
+****************************/
+@media (max-width: 1024px) {
+	.wpdn-extra{
+		opacity:1
+	}
+	.wpdn-edit-title {
+		display: inline-block !important;
+	}
+}
